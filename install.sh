@@ -27,6 +27,7 @@ function main() {
     sudo systemctl daemon-reload
     sudo systemctl enable mc_server@${install_dir}.service
     sudo systemctl enable mc_backup@${install_dir}.service
+    sudo systemctl enable mc_backup@${install_dir}.timer
 
     # give the user the option to edit the server.properties file
     vim /opt/minecraft-servers/${install_dir}/server/server.properties
