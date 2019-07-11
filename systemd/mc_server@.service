@@ -1,0 +1,14 @@
+[Unit]
+Description=Minecraft server service
+Documentation=https://github.com/cezarmathe/easy-mc-deployable-server
+After=network.target
+
+[Service]
+ExecStart=/opt/minecraft-servers/%i/server/run.sh
+Restart=on-failure
+RestartSec=60s
+Type=simple
+User=minecraft-server
+
+[Install]
+WantedBy=multi-user.target

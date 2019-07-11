@@ -1,0 +1,10 @@
+[Unit]
+Description=Run a minecraft world backup every day
+
+[Timer]
+OnBootSec=1h
+OnUnitActiveSec=1d
+Unit=mc-backup@%i.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Minecraft server backup service
+Documentation=https://github.com/cezarmathe/easy-mc-deployable-server
+After=network.target mc_server@%i.service
+
+[Service]
+ExecStart=/opt/minecraft-servers/%i/backups/backup.sh
+Restart=on-failure
+RestartSec=5s
+Type=oneshot
+User=minecraft-server
+
+[Install]
+WantedBy=multi-user.target

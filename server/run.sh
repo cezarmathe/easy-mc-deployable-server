@@ -21,5 +21,14 @@ trap server_shutdown EXIT SIGTERM SIGINT
 java -Xmx"${JVM_MEM_MAX}" -Xms"${JVM_MEM_MIN}" -jar server.jar nogui
 
 function server_shutdown() {
-    
+    SERVER_PID=$(ps | grep java | grep if | cut -b 1-5)
+
+    printf "Terminating java server\n"
+    kill ${SERVER_PID}
+
+    printf "Creating a backup\n"
+    bash ../backups/backup.sh
+
+    printf "Server terminating\n"
+    exit
 }
